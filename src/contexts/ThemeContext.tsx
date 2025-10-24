@@ -29,28 +29,25 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
  * ThemeProvider Component
  *
  * Provides theme context to the entire application tree.
- * Handles theme persistence, DOM updates, and state management.
+ * Handles theme detection from system preferences, DOM updates, and state management.
+ * Theme changes are NOT persisted - the app always starts with the system theme.
  *
  * @param children - React components that will have access to theme context
  */
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // Initialize theme state with lazy initialization to read from localStorage
+  // Initialize theme state based on system preference
+  // Always detects system theme on startup, does not persist user choice
   const [theme, setTheme] = useState<Theme>(() => {
-    // Attempt to restore saved theme from localStorage
-    const saved = localStorage.getItem('theme');
-    // Default to 'light' theme if no saved preference exists
-    return (saved as Theme) || 'light';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
   });
 
   /**
-   * Effect to handle theme persistence and DOM updates.
-   * Runs whenever the theme changes to:
-   * 1. Save the new theme to localStorage for persistence across sessions
-   * 2. Apply the theme class to document.documentElement for CSS styling
+   * Effect to handle DOM updates when theme changes.
+   * Applies the theme class to document.documentElement for CSS styling.
+   * Note: Theme is NOT persisted to localStorage - always starts fresh from system preference.
    */
   useEffect(() => {
-    // Persist theme preference to localStorage
-    localStorage.setItem('theme', theme);
     // Apply theme class to HTML element for CSS selectors (e.g., .dark .some-class)
     document.documentElement.className = theme;
   }, [theme]);

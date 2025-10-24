@@ -223,6 +223,13 @@ export default function VimEditor({
             border: "none !important",
           },
         }, { dark: true }) : EditorView.theme({
+          "&": {
+            backgroundColor: "#ffffff",
+            color: "#1f2328",
+          },
+          ".cm-content": {
+            caretColor: "#000000",
+          },
           ".cm-vim-fat-cursor": {
             backgroundColor: "black !important",
             border: "none !important",
@@ -239,6 +246,14 @@ export default function VimEditor({
           ".cm-vim-fat-cursor::selection": {
             backgroundColor: "black !important",
             color: "white !important",
+          },
+          ".cm-activeLine": {
+            backgroundColor: "#f6f8fa",
+          },
+          ".cm-gutters": {
+            backgroundColor: "#ffffff",
+            color: "#656d76",
+            border: "none",
           },
         }),
       ],
