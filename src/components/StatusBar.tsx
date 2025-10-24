@@ -47,7 +47,7 @@ export default function StatusBar({ wordCount, vimMode, line, column }: StatusBa
         </span>
 
         {/* Vim mode indicator with highlighting */}
-        <span className="px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+        <span className="px-2 py-1 rounded text-xs font-medium text-gray-600 dark:text-gray-400">
           {vimMode.toUpperCase()}
         </span>
       </div>
@@ -56,7 +56,7 @@ export default function StatusBar({ wordCount, vimMode, line, column }: StatusBa
       <button
         onClick={toggleTheme}
         className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs font-medium transition-colors"
-        title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode (resets to system theme on restart)`}
       >
         {/* Button text changes based on current theme */}
         {theme === 'light' ? 'Dark' : 'Light'}
