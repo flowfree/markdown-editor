@@ -7,9 +7,25 @@ html, body, #root {
   overflow: hidden;
 }
 
+/* Light mode configuration */
+.light {
+  color-scheme: light;
+}
+
 /* Dark mode configuration */
 .dark {
   color-scheme: dark;
+}
+
+/* Light mode preview content styling */
+.light .preview-content {
+  color: #1f2328;
+  background-color: #ffffff !important;
+}
+
+/* Light mode preview wrapper */
+.light .markdown-preview-wrapper {
+  background-color: #ffffff !important;
 }
 
 /* Dark mode preview content styling */
@@ -21,6 +37,11 @@ html, body, #root {
 /* Force dark backgrounds on all preview elements */
 .dark .preview-content * {
   background-color: inherit !important;
+}
+
+/* Dark mode preview wrapper */
+.dark .markdown-preview-wrapper {
+  background-color: #000000 !important;
 }
 
 /* Override any forced white backgrounds in dark mode */
@@ -370,6 +391,15 @@ html, body, #root {
   width: 4px;
 }
 
+/* Light mode gutter styling */
+.light .gutter {
+  background-color: #f1f3f4;
+}
+
+.light .gutter:hover {
+  background-color: #e8eaed;
+}
+
 /* Dark mode gutter styling */
 .dark .gutter {
   background-color: #374151;
@@ -377,6 +407,12 @@ html, body, #root {
 
 .dark .gutter:hover {
   background-color: #4b5563;
+}
+
+/* Light mode status bar styling */
+.light .status-bar {
+  background-color: #f3f4f6 !important;
+  border-top-color: #d1d5db !important;
 }
 
 /* Dark mode status bar styling */

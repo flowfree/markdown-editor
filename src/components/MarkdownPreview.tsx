@@ -111,7 +111,7 @@ export default function MarkdownPreview({
   return (
     <div
       ref={containerRef}
-      className="h-full p-6 bg-white dark:bg-black overflow-auto"
+      className="markdown-preview-wrapper h-full p-6 bg-white dark:bg-black overflow-auto"
       onScroll={handleScroll}
     >
       {/*
